@@ -23,7 +23,8 @@ def invia_messaggio(testo):
 
 def notizie_giornaliere():
     oggi = datetime.now().strftime('%d/%m/%Y')
-    messaggio = f"🗓️ *Report Economico del {oggi}*
+    messaggio = f"📅 *Report Economico del {oggi}*\\n\\n"
+    
 
 "
     messaggio += "📌 *Eventi attesi oggi:*

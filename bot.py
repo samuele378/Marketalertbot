@@ -4,6 +4,7 @@ import schedule
 from datetime import datetime
 import os
 
+# === CONFIGURAZIONE ===
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
@@ -16,9 +17,15 @@ def invia_messaggio(testo):
     }
     requests.post(url, data=payload)
 
+# === FUNZIONI MESSAGGI ===
+
 def notizie_giornaliere():
     oggi = datetime.now().strftime('%d/%m/%Y')
     messaggio = f"📅 *Report Economico del {oggi}*\n\n"
+    messaggio += "📌 *Eventi attesi oggi:*\n"
+    messaggio += "- NFP USA alle 14:30\n"
+    messaggio += "- Tasso disoccupazione USA\n"
+    messaggio += "- ISM Non-Manifatturiero\n\n"
     messaggio += "📈 *Impatto probabile sul Nasdaq Futures:*\n"
     messaggio += "- Dati forti: possibile spinta rialzista\n"
     messaggio += "- Dati deboli: rischio vendite e aumento volatilità\n"
@@ -32,9 +39,11 @@ def check_news():
     messaggio += "🎯 *Scenario probabile:* impulso long intraday, con resistenza in area 18.950.\n"
     invia_messaggio(messaggio)
 
+# === PROGRAMMAZIONE ===
 schedule.every().day.at("08:30").do(notizie_giornaliere)
 schedule.every(1).minutes.do(check_news)
 
+# === CICLO INFINITO ===
 while True:
     schedule.run_pending()
     time.sleep(1)

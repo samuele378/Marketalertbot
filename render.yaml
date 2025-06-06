@@ -1,6 +1,6 @@
 services:
   - type: worker
     name: marketalertbot
-    env: python
+    runtime: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python market_alert_bot_render.py"
+    startCommand: "python bot.py"

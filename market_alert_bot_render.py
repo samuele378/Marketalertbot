@@ -1,4 +1,3 @@
-
 import requests
 import time
 import schedule
@@ -23,37 +22,18 @@ def invia_messaggio(testo):
 
 def notizie_giornaliere():
     oggi = datetime.now().strftime('%d/%m/%Y')
-    messaggio = f"📅 *Report Economico del {oggi}*\\n\\n"
-    
-
-"
-    messaggio += "📌 *Eventi attesi oggi:*
-"
-    messaggio += "- NFP USA alle 14:30
-"
-    messaggio += "- Tasso disoccupazione USA
-"
-    messaggio += "- ISM Non-Manifatturiero
-
-"
-    messaggio += "📈 *Impatto probabile sul Nasdaq Futures:*
-"
-    messaggio += "- Dati forti: possibile spinta rialzista
-"
-    messaggio += "- Dati deboli: rischio vendite e aumento volatilità
-"
+    messaggio = f"📅 *Report Economico del {oggi}*\n\n"
+    messaggio += "📈 *Impatto probabile sul Nasdaq Futures:*\n"
+    messaggio += "- Dati forti: possibile spinta rialzista\n"
+    messaggio += "- Dati deboli: rischio vendite e aumento volatilità\n"
     invia_messaggio(messaggio)
 
 def check_news():
     ora = datetime.now().strftime('%H:%M:%S')
-    messaggio = f"⏱️ *Controllo alle {ora}*
-"
-    messaggio += "📊 Dato uscito: *NFP 280K vs attese 190K*
-"
-    messaggio += "💹 Nasdaq attuale: 18.860
-"
-    messaggio += "🎯 *Scenario probabile:* impulso long intraday, con resistenza in area 18.950.
-"
+    messaggio = f"⏱️ *Controllo alle {ora}*\n"
+    messaggio += "📊 Dato uscito: *NFP 280K vs attese 190K*\n"
+    messaggio += "💹 Nasdaq attuale: 18.860\n"
+    messaggio += "🎯 *Scenario probabile:* impulso long intraday, con resistenza in area 18.950.\n"
     invia_messaggio(messaggio)
 
 # === PROGRAMMAZIONE ===
@@ -66,3 +46,5 @@ schedule.every(1).minutes.do(check_news)
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+
